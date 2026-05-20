@@ -18,6 +18,9 @@ Icon\r
 [Ll]ogs/
 [Mm]emoryCaptures/
 UserSettings/
+AssetBundles/
+CrashReports/
+MemoryCaptures/
 
 # Unity generated files
 *.csproj
@@ -35,10 +38,41 @@ UserSettings/
 *.opendb
 *.VC.db
 *.pidb.meta
+*.booproj
+*.sln.DotSettings
+
+# Unity cache and generated assets
+*.booproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
+*.sln.iml
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Package manager
+Library/PackageCache/
+Library/AssetDatabase/
+Library/ShaderCache/
+Library/ScriptAssemblies/
+Library/ScriptMapper/
+Library/SourceAssetDB/
+Library/metadata/
+Library/ArtifactDB/
+Library/PackageCache/
+Library/Bee/
+Library/PackageCache/*
 
 # Visual Studio / Rider
 .vscode/
 .idea/
+.vs/
 *.sln.iml
 
 # Logs
@@ -49,6 +83,9 @@ UserSettings/
 *.tgz
 *.gz
 *.bz2
+*.zip
+*.rar
+*.7z
 
 # Temporary files
 *~
@@ -60,4 +97,31 @@ node_modules/
 pnpm-lock.yaml
 yarn.lock
 package-lock.json
+
+# Build output
+*.apk
+*.unitypackage
+*.app
+*.ipa
+*.dmg
+*.exe
+*.obb
+*.apk
+
+# Local configuration
+local.properties
+
+# Unity PlayMode tests
+TestResults/
+
+# # Ignore generated image previews
+# *.psd.meta
+# *.tga.meta
+# *.png.meta
+# *.jpg.meta
+# *.jpeg.meta
+# *.bmp.meta
+# *.tif.meta
+# *.tiff.meta
+# *.gif.meta
 
