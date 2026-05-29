@@ -2,32 +2,67 @@
 
 ```md
 Assets
-├── Models
-│   ├── computer
-│   ├── Room
-│   │   ├── table
-│   │   ├── wall
-│   │   ├── window
-│   │   ├── chair
-│   │   └── floor
-│   ├── Anna
-│   ├── Props
-│   │   ├── cup
-│   │   └── cake
+├── Animations
+│   ├── Animation_AnnaGivesCake
+│   ├── Animation_AnnaGivesCup
+│   └── Animation_AnnaWalks
 ├── Audio
-│   ├── Dialogue
-│   │   ├── anna-walks
-│   │   ├── anna-gives-cake
-│   │   └── anna-gives-cup
-│   ├── SFX
-│   └── Music
-├── Materials
+│   ├── Dialogues
+│   │   ├── Dialogue_KnittingPattern
+│   │   ├── Dialogue_OutOfStorage
+│   │   ├── Dialogue_PictureTogether
+│   │   └── Dialogue_Start
+│   ├── Music
+│   └── SFX
+│       ├── SFX_Click
+│       ├── SFX_ClosingFile
+│       ├── SFX_InTrashbin
+│       ├── SFX_OpeningFile
+│       └── SFX_OutOfStorage
 ├── Images
-├── Yarn
-│   └── DAY1
-└── Animations
-    ├── anna-walks
-    ├── anna-gives-cake
-    └── anna-gives-cup
+│   ├── Image_KnittingPattern
+│   └── Image_PictureTogether
+├── Materials
+│   ├── Material_Anna
+│   ├── Material_Chair
+│   ├── Material_Cake
+│   ├── Material_Computer
+│   ├── Material_CoffeeCup
+│   ├── Material_Floor
+│   ├── Material_Plant
+│   ├── Material_Table
+│   ├── Material_Vase
+│   ├── Material_Wall
+│   └── Material_Window
+├── Models
+│   ├── Model_Anna
+│   ├── Model_Computer
+│   ├── Props
+│   │   ├── Prop_Cake
+│   │   └── Prop_CoffeeCup
+│   └── Room
+│       ├── Model_Chair
+│       ├── Model_Floor
+│       ├── Model_PictureFrame
+│       ├── Model_Plant
+│       ├── Model_Table
+│       ├── Model_Vase
+│       ├── Model_Wall
+│       └── Model_Window
+├── Prefabs
+├── Scripts
+│   ├── ClickObject
+│   └── DragAndDrop
+├── UI
+│   ├── UI_CloseWindowButton
+│   ├── UI_EmptyTrashbin
+│   ├── UI_File
+│   ├── UI_Folder
+│   ├── UI_FullTrashbin
+│   ├── UI_OutOfStorage
+│   ├── UI_SemiFullTrashbin
+│   └── UI_StartButton
+└── Yarn
+    └── DAY1
 ```
 
