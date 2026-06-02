@@ -1,0 +1,16 @@
+﻿title: AllDialogues
+---
+// This is an example of a Yarn Spinner script. Write your dialogue here!
+
+Anna : Thank you for coming to help. My computer is really slow.
+Camille (You) : No problem. Let’s see what’s wrong.
+
+Anna : Oh! I made this jumper a few days ago and I didn’t really like it. But my very good friend Sarah sent me this..
+Camille : ...
+
+Anna : Would you like some coffee ?
+-> Yes.
+-> Maybe.
+-> Nope.
+
+===
