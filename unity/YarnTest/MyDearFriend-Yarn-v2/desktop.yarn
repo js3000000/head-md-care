@@ -12,4 +12,6 @@ position: 100,100
     <<jump mailbox>>
 -> Play .wav file
     <<jump Main2>>
+-> Shutdown computer
+    <<jump endOfStory>>
 ===

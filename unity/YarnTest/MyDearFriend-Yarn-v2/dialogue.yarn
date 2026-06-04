@@ -2,7 +2,7 @@
 // Onboarding - Intro
 //====================
 title: Start
-position: 12,-555
+position: -420,-513
 ---
 
 <<declare $zoom = 0>> // De 0 à 100
@@ -47,7 +47,7 @@ You: We have to make space on your hard disk.
 //=========================
 ===
 title: main
-position: 23,-115
+position: -349,-228
 ---
 Anna: What on earth is this file?// TODO : Anna can say something unique here
 
@@ -87,7 +87,7 @@ Anna: Would you like something to drink ?
 
 ===
 title: Main2
-position: 0,10
+position: -374,58
 ---
 
 Anna: There, I left some coffee for you next to your computer.
@@ -108,11 +108,12 @@ Anna: There, I left some coffee for you next to your computer.
     -> Keep working.
         <<set $zoom -= 2>>
         (The camera zooms back in the computer desktop.)
+    
     <<endif>>
 
 
 
-<<jump endOfStory>>
+    <<jump desktop>>>>
 
 
 //===============
@@ -120,7 +121,7 @@ Anna: There, I left some coffee for you next to your computer.
 //===============
 ===
 title: endOfStory
-position: 31,336
+position: -355,292
 ---
 Developpers team: That's all folks!
 ===
