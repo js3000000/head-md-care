@@ -1,8 +1,8 @@
 title: Start
-position: 208,-413
+position: 180,-549
 ---
 
-<<declare $zoom = 0>> // De 0 à 100
+<<declare $zoomOut = 0>> // De 0 à 100
 
 (You see a computer screen with the login page open. A Post-it note is stuck to the computer with "pwd 1234" written on it.)
 
@@ -16,7 +16,7 @@ You: No problem. Let's see what's wrong.
 (You see the computer desktop filled with random files and folders.)
 (A window pops up)
 
-Computer : Warning : Storage FULL!!! Please make space by deleting unnecessary files.
+Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
 
 You: We have to make space on your hard disk.
 
@@ -32,23 +32,34 @@ You: We have to make space on your hard disk.
 
 
 -> Drag and drop the file to the trash bin.
-    // Makes Anna feel a bit insecure.
-    Anna: (A little shaken) Oh Wait, what are you doing ?
-    -> Explains to Anna that she has to make some space on her computer or buy a new hardrive.
+    <<jump shaken>>
 
 -> Drop the file in place.
     // Makes Anna feel good about what you are doing.
     <<set $zoom += 1>>
     (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+    <<jump neutral>>
 
 
-Anna: Can you open this file for me ? I don't know what it is.
+===
+title:shaken
+position: 0,0
+---
+  // Makes Anna feel a bit insecure.
+    Anna: (A little shaken) Oh, wait! What are you doing ?
+    -> Tell Anna that she needs to free up some space on her hard drive or buy a new one.
+    <<jump neutral>>
+===
+title: neutral
+position: 312,3
+---
+Anna: Can you open it? I don't know what it is. // TODO : Anna can say something unique here
 
 -> Open the file
 
 (It's a pdf with a tutorial for knitting a hat with cat ears.)
 
-Anna: Oh, I wanted to make those for carnaval last year.
+Anna: (surprised and happy) Oh! I wanted to make those for carnaval last year.
 Anna: I wanted to go with my friend Dana.
 Anna: We ended up not going.
 Anna: ...
@@ -70,32 +81,41 @@ Anna: Would you like something to drink ?
 
 (You are still facing Anna's desktop.)
 
-(A NOTIFICATION alerting Anna that her inbox is full appears at the corner of her screen.)
-(The icon of her mailbox is GLOWING.)
+(A NOTIFICATION alerting Anna that her inbox is full appears at the corner of the screen.)
+(The mailbox icon is GLOWING.)
 
 -> Open the mailbox.
+-> Keep working on the desktop.
+    <<jump gameOver>>
 
 (You see that she has 10'000 emails.)
 
-Anna: There, I left the coffee next to your computer.
-<<if $zoom >= 1>>
-    <<set $zoom += 1>> // Maybe head rotate. IDK (I don't know...)
+Anna: There, I left some coffee next to your computer.
+<<if $zoomOut >= 1>>
+    <<set $zoomOut += 1>> // Maybe head rotate. IDK (I don't know...)
     (The camera zooms out enough for you to see that Anna left a mug and a cookie.)
     (There's a terrible photomontage of Anna surfing a dolphin.)
     -> Ask Anna about the mug.
         Anna: Oooh. Haha. I'm so used to it, I forgot there was a picture!
         Anna: I went to an amusement park with my nephews some time ago.
         Anna: I think Dana was there. She really enjoyed the kids attractions.
-        << set $zoom +=10>>
+        << set $zoomOut +=10>>
         (Camera zooms out you see the table and that Anna is standing accross the table.)
     -> Eat the cookie.
     -> Take a sip.
     -> Keep working.
-        <<set $zoom -= 2>>
+        <<set $zoomOut -= 2>>
         (The camera zooms back in the computer desktop.)
     <<endif>>
 
 -> Close the mailbox
 -> Browse through her emails.
 -> Read the spam.
+<<jump gameOver>>
+
+===
+title: gameOver
+position: 0,0
+---
+Developpers team: That's all folks!
 ===
