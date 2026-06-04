@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickOnPassword
   dialogueRunner: {fileID: 1587982253}
-  dialogueNodeName: TaskFixComputer
+  dialogueNodeName: AllStory1
 --- !u!136 &578415954
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 936744074}
     m_Modifications:
+    - target: {fileID: 1668778351083774138, guid: d825f711ad8584afb8a383bbb0ffdcd4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3192332193780674300, guid: d825f711ad8584afb8a383bbb0ffdcd4, type: 3}
       propertyPath: m_Name
       value: Studio
