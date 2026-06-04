@@ -1,0 +1,11 @@
+title: mailbox
+position: 0,100
+---
+(You see Anna's mailbox, She has 10'000 emails)
+
+-> Browse through her emails
+-> ...
+-> Close the mailbox
+    <<jump desktop>>
+
+===

@@ -1,0 +1,10 @@
+title:Shaken
+position: 0,0
+---
+  // Makes Anna feel a bit insecure.
+    Anna: (A little shaken) Oh, wait! What are you doing ?
+    -> Tell Anna that she needs to free up some space on her hard drive or buy a new one.
+
+
+    <<jump main>>
+===
