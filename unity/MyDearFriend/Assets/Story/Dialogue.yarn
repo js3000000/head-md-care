@@ -7,25 +7,27 @@ position: -420,-513
 
 <<declare $zoom = 0>> // De 0 à 100
 
-(You see a computer screen with the login page open. A Post-it note is stuck to the computer with "pwd 1234" written on it.)
-
--> Enter the password 1234
-
 // IMPORTANT : Opportunity to introduce Anna's uniqueness
-Anna: Thanks for helping me.
-Anna: ... My computer is very slow.
-You: No problem. Let's see what's wrong.
+Anna: Thank you for helping me.
+Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
+Camille: No problem. Let's see what's wrong.
+===
+title: WarningWindow
+---
+//Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
 
-(You see the computer desktop filled with random files and folders.)
-(A window pops up)
+Camille: Your hard drive is full.
 
-Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
+Anna: Full? Already?
+Anna: I suppose I kept too many things.
 
-You: We have to make space on your hard disk.
+// (The close button at the corner of the window is GLOWING.)
 
-(The close button at the corner of the window is GLOWING.)
+// -> Close the window
+===
 
--> Close the window
+title: FirstFile
+---
 
 (A file named "fehju_3452.pdf" on the desktop is GLOWING.)
 
