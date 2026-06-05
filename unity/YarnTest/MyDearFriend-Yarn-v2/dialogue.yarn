@@ -40,13 +40,13 @@ You: We have to make space on your hard disk.
     // ZOOM OUT
     <<set $zoom += 1>>
     (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
-    <<jump main>>
+    <<jump Main>>
     
 //=========================
 // Main branch of the story
 //=========================
 ===
-title: main
+title: Main
 position: -349,-228
 ---
 Anna: What on earth is this file?// TODO : Anna can say something unique here
@@ -81,9 +81,9 @@ Anna: Would you like something to drink ?
 (The mailbox icon is GLOWING.)
 
 -> Open the mailbox.
-    <<jump mailbox>>
+    <<jump Mailbox>>
 -> Keep working on the desktop.
-    <<jump desktop>>
+    <<jump Desktop>>
 
 ===
 title: Main2
@@ -113,14 +113,14 @@ Anna: There, I left some coffee for you next to your computer.
 
 
 
-    <<jump desktop>>>>
+    <<jump Desktop>>
 
 
 //===============
 // End Of Story
 //===============
 ===
-title: endOfStory
+title: EndOfStory
 position: -355,292
 ---
 Developpers team: That's all folks!

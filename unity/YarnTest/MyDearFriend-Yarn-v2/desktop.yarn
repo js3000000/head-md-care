@@ -1,4 +1,4 @@
-title: desktop
+title: Desktop
 position: 100,100
 ---
 
@@ -9,9 +9,9 @@ position: 100,100
 -> Open anyfile // ...
     <<jump Main2>>
 -> Open mailbox
-    <<jump mailbox>>
+    <<jump Mailbox>>
 -> Play .wav file
     <<jump Main2>>
 -> Shutdown computer
-    <<jump endOfStory>>
+    <<jump EndOfStory>>
 ===

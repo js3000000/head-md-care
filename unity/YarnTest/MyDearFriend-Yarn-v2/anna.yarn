@@ -1,4 +1,4 @@
-title:Shaken
+title: Shaken
 position: 0,0
 ---
   // Makes Anna feel a bit insecure.
@@ -6,5 +6,5 @@ position: 0,0
     -> Tell Anna that she needs to free up some space on her hard drive or buy a new one.
 
 
-    <<jump main>>
+    <<jump Main>>
 ===
