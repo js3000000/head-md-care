@@ -1,0 +1,31 @@
+{
+    "projectFileVersion": 4,
+    "sourceFiles": [
+        "**/*.yarn"
+    ],
+    "excludeFiles": [],
+    "baseLanguage": "en",
+    "projectName": "dialogue-v2",
+    "authorName": [
+        "Author"
+    ],
+    "editorOptions": {
+        "yarnScriptEditor": {
+            "presenter": "try",
+            "projectGraphPositions": {
+                "characters.yarn": {
+                    "x": 144.06666666666666,
+                    "y": 12
+                },
+                "locations.yarn": {
+                    "x": 329,
+                    "y": 1125
+                },
+                "main.yarn": {
+                    "x": 23,
+                    "y": 565
+                }
+            }
+        }
+    }
+}
