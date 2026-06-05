@@ -1,0 +1,127 @@
+//====================
+// Onboarding - Intro
+//====================
+title: Start
+position: -420,-513
+---
+
+<<declare $zoom = 0>> // De 0 à 100
+
+(You see a computer screen with the login page open. A Post-it note is stuck to the computer with "pwd 1234" written on it.)
+
+-> Enter the password 1234
+
+// IMPORTANT : Opportunity to introduce Anna's uniqueness
+Anna: Thanks for helping me.
+Anna: ... My computer is very slow.
+You: No problem. Let's see what's wrong.
+
+(You see the computer desktop filled with random files and folders.)
+(A window pops up)
+
+Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
+
+You: We have to make space on your hard disk.
+
+(The close button at the corner of the window is GLOWING.)
+
+-> Close the window
+
+(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
+
+-> Click on the file
+
+(Now the icon of the trash bin is GLOWING.)
+
+-> Drag and drop the file to the trash bin
+    <<jump Shaken>>
+-> Drop the file in place
+    // Makes Anna feel good about what you're doing. You are waiting for her answer
+    // ZOOM OUT
+    <<set $zoom += 1>>
+    (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+    <<jump Main>>
+    
+//=========================
+// Main branch of the story
+//=========================
+===
+title: Main
+position: -349,-228
+---
+Anna: What on earth is this file?// TODO : Anna can say something unique here
+
+-> Open the file
+
+(It's a pdf with a tutorial for knitting a hat with cat ears.)
+
+Anna: Oh! I wanted to make those for carnaval last year.
+Anna: I wanted to go with my friend Dana.
+Anna: We ended up not going.
+Anna: ...
+Anna: You can delete the file. I won't need it anymore.
+
+-> Drag and drop the file to the trash bin
+-> Keep the file
+    Anna: Please delete the file.
+    -> Delete the file.
+
+Anna: Thank you.
+// I'm letting you work now.
+Anna: Would you like something to drink ?
+-> Yes, with pleasure.
+-> hmmm, mmmm. // TODO: Should we add points when she's gentle or not ?
+-> No.
+
+(You can hear Anna walking away.)
+
+(You are still facing Anna's desktop.)
+
+(A NOTIFICATION alerting Anna that her inbox is full appears at the corner of the screen.)
+(The mailbox icon is GLOWING.)
+
+-> Open the mailbox.
+    <<jump Mailbox>>
+-> Keep working on the desktop.
+    <<jump Desktop>>
+
+===
+title: Main2
+position: -374,58
+---
+
+Anna: There, I left some coffee for you next to your computer.
+<<if $zoom >= 1>>
+    <<set $zoom += 1>> // Maybe head rotate. IDK (I don't know...)
+    (The camera zooms out enough for you to see that Anna left a mug and a cookie.)
+    (There's a terrible photomontage of Anna surfing a dolphin.)
+    -> Ask Anna about the mug.
+        Anna: Oooh. Haha. I'm so used to it, I forgot the picture.
+        Anna: I went to an amusement park with my nephews some time ago.
+        Anna: I think Dana was there. She used to really enjoy kids attractions.
+        << set $zoom +=10>>
+        (Camera zooms out  for you to see the table and Anna standing by the table.)
+    -> Eat the cookie.
+        << set $zoom +=1>>
+    -> Take a sip.
+        << set $zoom +=1>>
+    -> Keep working.
+        <<set $zoom -= 2>>
+        (The camera zooms back in the computer desktop.)
+    
+    <<endif>>
+
+
+
+    <<jump Desktop>>
+
+
+//===============
+// End Of Story
+//===============
+===
+title: EndOfStory
+position: -355,292
+---
+Developpers team: That's all folks!
+===

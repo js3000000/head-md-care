@@ -1,0 +1,21 @@
+title: Mailbox
+position: -39,-63
+---
+(You see Anna's mailbox, She has 10'000 emails)
+
+-> Browse through her emails
+    <<jump ExitMail>>
+-> Close the mailbox
+    <<jump Desktop>>
+
+===
+title: ExitMail
+position: -462,-79
+---
+
+(You see a mail from Exit association)
+-> Click on mail
+    (It's a pdf brochure for helping relatives through the process of grieving someone who passed away)
+
+<<jump Mailbox>>
+===
