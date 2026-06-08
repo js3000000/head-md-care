@@ -1,0 +1,304 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using Yarn.Unity;
+
+public class DesktopItem : MonoBehaviour,
+    IPointerClickHandler,
+    IPointerDownHandler,
+    IPointerUpHandler,
+    IBeginDragHandler,
+    IDragHandler,
+    IEndDragHandler
+{
+    [Header("Yarn")]
+    public DialogueRunner dialogueRunner;
+
+    public string clickNodeName;
+    public string trashNodeName;
+    public string dropElsewhereNodeName;
+
+    [Header("Drag")]
+    public Camera cam;
+
+    [Header("Selection Scale")]
+    public float selectedScaleMultiplier = 1.15f;
+
+    [Header("Open File Object")]
+    public GameObject fileContentObject;
+
+    [Header("Trash Material")]
+    public Material trashHoverMaterial;
+
+    [Header("Trash Animation")]
+    public Transform trashTransform;
+    public float trashBigScale = 1.3f;
+    public float trashPulseDuration = 1f;
+
+    private Vector3 originalScale;
+    private Vector3 dragStartPosition;
+    private Vector3 dragOffset;
+
+    private Renderer objectRenderer;
+    private Material[] originalMaterials;
+
+    private Vector3 trashOriginalScale;
+    private Coroutine trashPulseCoroutine;
+
+    private bool isDragging;
+    private bool wasDragged;
+    private bool isOverTrash;
+
+    void Start()
+    {
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
+
+        originalScale = transform.localScale;
+
+        objectRenderer = GetComponent<Renderer>();
+
+        if (objectRenderer != null)
+        {
+            originalMaterials = objectRenderer.materials;
+        }
+
+        if (trashTransform != null)
+        {
+            trashOriginalScale = trashTransform.localScale;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // Scale up the selected file/folder
+        transform.localScale = originalScale * selectedScaleMultiplier;
+
+        // Start trash animation while player is holding this item
+        StartTrashPulse();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        // Stop trash animation when player releases
+        StopTrashPulse();
+
+        // If it was only a click, scale back down
+        if (!isDragging)
+        {
+            transform.localScale = originalScale;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // Prevent click from firing after drag
+        if (wasDragged)
+        {
+            wasDragged = false;
+            return;
+        }
+
+        // Activate the image/content inside the file
+        if (fileContentObject != null)
+        {
+            fileContentObject.SetActive(true);
+        }
+
+        // Start Yarn dialogue for clicking/opening this file
+        if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
+        {
+            dialogueRunner.StartDialogue(clickNodeName);
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        isDragging = true;
+        wasDragged = true;
+
+        dragStartPosition = transform.position;
+
+        // Create ray from mouse/touch position
+        Ray ray = cam.ScreenPointToRay(eventData.position);
+
+        // Drag on XY plane, keeping Z fixed
+        Plane dragPlane = new Plane(Vector3.forward, dragStartPosition);
+
+        if (dragPlane.Raycast(ray, out float distance))
+        {
+            Vector3 worldPoint = ray.GetPoint(distance);
+
+            // Prevent object from snapping to pointer center
+            dragOffset = transform.position - worldPoint;
+        }
+
+        transform.localScale = originalScale * selectedScaleMultiplier;
+
+        // StartTrashPulse();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Ray ray = cam.ScreenPointToRay(eventData.position);
+
+        // Drag on XY plane, keeping Z fixed
+        Plane dragPlane = new Plane(Vector3.forward, dragStartPosition);
+
+        if (dragPlane.Raycast(ray, out float distance))
+        {
+            Vector3 worldPosition = ray.GetPoint(distance) + dragOffset;
+
+            transform.position = new Vector3(
+                worldPosition.x,
+                worldPosition.y,
+                dragStartPosition.z
+            );
+        }
+
+        CheckTrashHover(eventData);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDragging = false;
+
+        transform.localScale = originalScale;
+
+        StopTrashPulse();
+
+        if (IsPointerOverTrash(eventData))
+        {
+            if (dialogueRunner != null && !string.IsNullOrEmpty(trashNodeName))
+            {
+                dialogueRunner.StartDialogue(trashNodeName);
+            }
+
+            Destroy(gameObject);
+            return;
+        }
+
+        // If dropped somewhere else, stay there
+        ResetMaterial();
+
+        if (dialogueRunner != null && !string.IsNullOrEmpty(dropElsewhereNodeName))
+        {
+            dialogueRunner.StartDialogue(dropElsewhereNodeName);
+        }
+    }
+
+    void CheckTrashHover(PointerEventData eventData)
+    {
+        bool currentlyOverTrash = IsPointerOverTrash(eventData);
+
+        if (currentlyOverTrash && !isOverTrash)
+        {
+            isOverTrash = true;
+            SetAllMaterials(trashHoverMaterial);
+        }
+        else if (!currentlyOverTrash && isOverTrash)
+        {
+            isOverTrash = false;
+            ResetMaterial();
+        }
+    }
+
+    bool IsPointerOverTrash(PointerEventData eventData)
+    {
+        Ray ray = cam.ScreenPointToRay(eventData.position);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return hit.collider.CompareTag("Trash");
+        }
+
+        return false;
+    }
+
+    void SetAllMaterials(Material newMaterial)
+    {
+        if (objectRenderer == null || newMaterial == null)
+        {
+            return;
+        }
+
+        Material[] newMaterials = new Material[objectRenderer.materials.Length];
+
+        for (int i = 0; i < newMaterials.Length; i++)
+        {
+            newMaterials[i] = newMaterial;
+        }
+
+        objectRenderer.materials = newMaterials;
+    }
+
+    void ResetMaterial()
+    {
+        if (objectRenderer != null && originalMaterials != null)
+        {
+            objectRenderer.materials = originalMaterials;
+        }
+
+        isOverTrash = false;
+    }
+
+    void StartTrashPulse()
+    {
+        if (trashTransform == null)
+        {
+            return;
+        }
+
+        if (trashPulseCoroutine != null)
+        {
+            StopCoroutine(trashPulseCoroutine);
+        }
+
+        trashPulseCoroutine = StartCoroutine(TrashPulseLoop());
+    }
+
+    void StopTrashPulse()
+    {
+        if (trashPulseCoroutine != null)
+        {
+            StopCoroutine(trashPulseCoroutine);
+            trashPulseCoroutine = null;
+        }
+
+        if (trashTransform != null)
+        {
+            trashTransform.localScale = trashOriginalScale;
+        }
+    }
+
+    IEnumerator TrashPulseLoop()
+    {
+        Vector3 bigScale = trashOriginalScale * trashBigScale;
+
+        while (true)
+        {
+            yield return ScaleTrash(trashOriginalScale, bigScale, trashPulseDuration);
+            yield return ScaleTrash(bigScale, trashOriginalScale, trashPulseDuration);
+        }
+    }
+
+    IEnumerator ScaleTrash(Vector3 fromScale, Vector3 toScale, float duration)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            float t = timer / duration;
+
+            trashTransform.localScale = Vector3.Lerp(fromScale, toScale, t);
+
+            yield return null;
+        }
+
+        trashTransform.localScale = toScale;
+    }
+}
