@@ -7,6 +7,8 @@ public class PulsatingFile : MonoBehaviour, IPointerClickHandler
     public DialogueRunner dialogueRunner;
     public string clickNodeName;
 
+    public GameObject openedFile; 
+
     public float pulseAmount = 0.1f;
     public float pulseSpeed = 3f;
 
@@ -46,6 +48,14 @@ public class PulsatingFile : MonoBehaviour, IPointerClickHandler
         //start the node specified in clickNodeName
         Debug.Log("PulsatingFile: OnPointerClick received, starting dialogue if applicable.");
         pulsing = false; // Stop pulsating when clicked
+        
+        if(openedFile != null)
+        {
+            Debug.Log($"PulsatingFile: Opened file {openedFile} clicked.");
+            openedFile.SetActive(true); // Show the opened file
+            
+        }
+
         if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
         {
             dialogueRunner.StartDialogue(clickNodeName);
