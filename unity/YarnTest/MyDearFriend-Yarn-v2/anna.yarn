@@ -1,10 +1,19 @@
-title: Shaken
+title:Shaken
 position: 0,0
 ---
   // Makes Anna feel a bit insecure.
     Anna: (A little shaken) Oh, wait! What are you doing ?
-    -> Tell Anna that she needs to free up some space on her hard drive or buy a new one.
+    Anna: I just... I need to know what disappears.
 
+    -> Apologize and open the file with her.
+      Camille: You're right. Sorry. I should have asked.
+      Anna: No, no. I am the one who asked you for help.
+      Anna: Perhaps, we can look at it together?
+      <<jump Main>>
+    -> Explain that space needs to be freed quickly.
+      Camille: We need to delete things if you want the computer to work.
+      Anna: Yes. Of, course.
+      Anna: Still, let's not be too quick.
+      <<jump Main>>
 
-    <<jump Main>>
 ===

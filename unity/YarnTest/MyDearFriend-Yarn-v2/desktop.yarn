@@ -4,14 +4,12 @@ position: 100,100
 
 (you see the desktop filled with dozen of random file and folders)
 
--> Open *.jpg // picture of Anna and Dana hiking
-    <<jump Main2>>
--> Open anyfile // ...
+-> Open "mountain_2023.jpg" // picture of Anna and Dana hiking
+    <<jump MountainPhoto>>
+-> Open "voice_note_D.wav" // ...
     <<jump Main2>>
 -> Open mailbox
     <<jump Mailbox>>
--> Play .wav file
-    <<jump Main2>>
--> Shutdown computer
+-> Shut down the computer
     <<jump EndOfStory>>
 ===

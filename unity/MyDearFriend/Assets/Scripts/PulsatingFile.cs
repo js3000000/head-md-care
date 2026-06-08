@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Yarn.Unity;
 
-public class PulsatingFile : MonoBehaviour
+public class PulsatingFile : MonoBehaviour, IPointerClickHandler
 {
     public DialogueRunner dialogueRunner;
-    //public string clickNodeName;
+    public string clickNodeName;
 
     public float pulseAmount = 0.1f;
     public float pulseSpeed = 3f;
@@ -34,19 +34,21 @@ public class PulsatingFile : MonoBehaviour
         pulsing = true;
     }
 
-    // void OnNodeComplete(string nodeName)
-    // {
-    //     if (nodeName == clickNodeName)
-    //         pulsing = true;
-    // }
+    void OnNodeComplete(string nodeName)
+    {
+        if (nodeName == clickNodeName)
+            pulsing = true;
+    }
 
-    // public void OnPointerClick(PointerEventData eventData)
-    // {
-    //     Destroy(transform.parent.gameObject);
-    //     //start the node specified in clickNodeName
-    //     if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
-    //     {
-    //         dialogueRunner.StartDialogue(clickNodeName);
-    //     }
-    // }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //Destroy(transform.parent.gameObject);
+        //start the node specified in clickNodeName
+        Debug.Log("PulsatingFile: OnPointerClick received, starting dialogue if applicable.");
+        pulsing = false; // Stop pulsating when clicked
+        if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
+        {
+            dialogueRunner.StartDialogue(clickNodeName);
+        }
+    }
 }

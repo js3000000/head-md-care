@@ -9,11 +9,11 @@ position: 0,0
       Camille: You're right. Sorry. I should have asked.
       Anna: No, no. I am the one who asked you for help.
       Anna: Perhaps, we can look at it together?
-      <<jump Main>>
+      <<jump KnittingPattern>>
     -> Explain that space needs to be freed quickly.
       Camille: We need to delete things if you want the computer to work.
       Anna: Yes. Of, course.
       Anna: Still, let's not be too quick.
-      <<jump Main>>
+      <<jump KnittingPattern>>
 
 ===

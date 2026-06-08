@@ -16,7 +16,6 @@ public class CloseWindow : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         originalScale = transform.localScale;
-
     }
 
     void Update()

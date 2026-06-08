@@ -6,40 +6,61 @@ position: -420,-513
 ---
 
 <<declare $zoom = 0>> // De 0 à 100
+<<declare $glowing_trashbin = false>>
 
-(You see a computer screen with the login page open. A Post-it note is stuck to the computer with "pwd 1234" written on it.)
+(Narration: You see a computer screen with the login page open. A Post-it note is stuck to the computer with "pwd 1234" written on it.)
+Camille's Thoughts: I have two chapters left to study. This should be simple. Help, be polite, go home.
 
 -> Enter the password 1234
 
 // IMPORTANT : Opportunity to introduce Anna's uniqueness
-Anna: Thanks for helping me.
-Anna: ... My computer is very slow.
-You: No problem. Let's see what's wrong.
+Anna: Thank you for helping me.
+Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
+Camille: No problem. Let's see what's wrong.
 
-(You see the computer desktop filled with random files and folders.)
+(The desktop appears. It is full of files and folders.)
 (A window pops up)
 
-Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
+Computer: Warning : Storage FULL!!! Please delete unnecessary files.
 
-You: We have to make space on your hard disk.
+Camille: Your hard drive is full.
 
-(The close button at the corner of the window is GLOWING.)
+Anna: Full? Already?
+Anna: I suppose I kept too many things.
 
--> Close the window
+(The close button on the warning window begins to GLOW.)
 
-(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
+-> Close the warning window
+    <<jump FirstFile>>
+===
 
--> Click on the file
+title: FirstFile
+---
 
-(Now the icon of the trash bin is GLOWING.)
+(A file named "fehjuhdjjds_3452.pdf" on the desktop begins to GLOW.)
 
--> Drag and drop the file to the trash bin
+Camille: There's a random PDF here. I can delete it.
+
+Anna: Which one?
+
+(The trash bin begins to GLOW.)
+<<set $glowing_trashbin = true>>
+
+// -> Click on the file
+
+// (Now the icon of the trash bin is GLOWING.)
+
+-> Drag the file to the trash immediately.
     <<jump Shaken>>
--> Drop the file in place
-    // Makes Anna feel good about what you're doing. You are waiting for her answer
-    // ZOOM OUT
-    <<set $zoom += 1>>
-    (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+// -> Ask Anna before deleting it.
+//     // Makes Anna feel good about what you're doing. You are waiting for her answer
+//     // ZOOM OUT
+//     <<set $zoom += 1>>
+//     Camille: Do you want to check what it is first?
+//     Anna: Oh. Yes, maybe. Just in case.
+//     (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+//     <<jump Main>>
+-> Open the file first.
     <<jump Main>>
     
 //=========================
@@ -49,39 +70,74 @@ You: We have to make space on your hard disk.
 title: Main
 position: -349,-228
 ---
-Anna: What on earth is this file?// TODO : Anna can say something unique here
+<<set $glowing_trashbin = false>>
+(The PDF opens.)
+(It is a knitting tutorial for a hat with cat ears.)
 
--> Open the file
+Anna: Oh! I wanted to make those for carnival last year.
+Anna: One for me and one for Dana.
+Anna: She said we would look ridiculous. (She laughs.)
+Anna: We ended up not going. I don't need the pattern anymore.
 
-(It's a pdf with a tutorial for knitting a hat with cat ears.)
+(The close button of the PDF begins to GLOW.)
 
-Anna: Oh! I wanted to make those for carnaval last year.
-Anna: I wanted to go with my friend Dana.
-Anna: We ended up not going.
-Anna: ...
-Anna: You can delete the file. I won't need it anymore.
+-> You close the file.
 
--> Drag and drop the file to the trash bin
--> Keep the file
-    Anna: Please delete the file.
+(Trash bin begins to GLOW.)
+<<set $glowing_trashbin = true>>
+
+-> Drag and drop the file to the trash bin.
+    <<jump AfterFirstDelete>>
+-> Ask wether she wants to keep a trace of it.
+    Camille: We could make a folder. Things you don't need, but don't want to throw away too brutally.
+    Anna: Like a little waiting room! 
+    Anna: I like that!
+    <<jump AfterFirstDelete>>
+-> Keep the file.
+    Camille: We can leave this one for later.
+    Anna: You are kind. But I think we should delete it.
     -> Delete the file.
+        Camille: Okay. We can delete it together.
+        Anna: Together, yes.
+        <<jump AfterFirstDelete>>
+===
+
+title: AfterFirstDelete
+---
+(File disappears.)
 
 Anna: Thank you.
 // I'm letting you work now.
-Anna: Would you like something to drink ?
--> Yes, with pleasure.
--> hmmm, mmmm. // TODO: Should we add points when she's gentle or not ?
--> No.
+Anna: Would you like something to drink?
+Anna: Coffee? Tea? I also have those terrible little biscuits my grandson loves.
 
+-> Coffee would be nice, thank you.
+    Anna: Good. People work better with a little bit of fuel!
+-> No, thank you. I should continue. // TODO: Should we add points when she's gentle or not ?
+    Anna: Serious student.
+    Anna: I will be in the kitchen if you need me.
+-> Maybe later.
+    Anna: Alright!
+===
+
+title: AloneAtDesktop
+---
 (You can hear Anna walking away.)
 
 (You are still facing Anna's desktop.)
 
 (A NOTIFICATION alerting Anna that her inbox is full appears at the corner of the screen.)
+
+Computer: Mailbox almost full.
+
 (The mailbox icon is GLOWING.)
 
--> Open the mailbox.
+-> Open the mailbox without calling Anna.
     <<jump Mailbox>>
+-> Call Anna before opening the mailbox.
+    Camille: Anna? Your mailbox is also full. Is it okay if I open it?
+    Anna: My mailbox too? Good grief. Yes, I'm coming.
+    <<jump MailboxWithAnna>>
 -> Keep working on the desktop.
     <<jump Desktop>>
 
@@ -113,7 +169,7 @@ Anna: There, I left some coffee for you next to your computer.
 
 
 
-    <<jump Desktop>>
+    <<jump desktop>>>>
 
 
 //===============
@@ -123,5 +179,5 @@ Anna: There, I left some coffee for you next to your computer.
 title: EndOfStory
 position: -355,292
 ---
-Developpers team: That's all folks!
+Developers team: That's all folks!
 ===

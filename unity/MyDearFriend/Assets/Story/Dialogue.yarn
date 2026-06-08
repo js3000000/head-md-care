@@ -41,20 +41,20 @@ Camille: There's a random PDF here. I can delete it.
 
 // (Now the icon of the trash bin is GLOWING.)
 
--> Drag and drop the file to the trash bin.
-    <<jump Shaken>>
--> Open file first.
-    // Makes Anna feel good about what you're doing. You are waiting for her answer
-    // ZOOM OUT
-    // <<set $zoom += 1>>
-    // (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
-    <<jump Main>>
+// -> Drag and drop the file to the trash bin.
+//     <<jump Shaken>>
+// -> Open file first.
+//     // Makes Anna feel good about what you're doing. You are waiting for her answer
+//     // ZOOM OUT
+//     // <<set $zoom += 1>>
+//     // (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+//     <<jump KnittingPattern>>
     
 //=========================
 // Main branch of the story
 //=========================
 ===
-title: Main
+title: KnittingPattern
 position: -349,-228
 ---
 //Anna: What on earth is this file?// TODO : Anna can say something unique here
