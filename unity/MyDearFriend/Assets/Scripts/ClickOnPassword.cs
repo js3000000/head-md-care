@@ -23,7 +23,7 @@ public class ClickOnPassword : MonoBehaviour, IPointerDownHandler
         if (objectToActivate != null && objectToActivate2 != null)
         {
             objectToActivate.SetActive(true);
-            objectToActivate2.SetActive(true);
+            //objectToActivate2.SetActive(true);
         }
 
    }

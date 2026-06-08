@@ -11,15 +11,18 @@ position: -420,-513
 Anna: Thank you for helping me.
 Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
 Camille: No problem. Let's see what's wrong.
+
+<<showWarning ErrorBox>>
 ===
 title: WarningWindow
 ---
 //Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
 
 Camille: Your hard drive is full.
-
 Anna: Full? Already?
-Anna: I suppose I kept too many things.
+Anna: I suppose I kept too many things. 
+
+<<startPulsating CloseButton>>
 
 // (The close button at the corner of the window is GLOWING.)
 
@@ -28,20 +31,21 @@ Anna: I suppose I kept too many things.
 
 title: FirstFile
 ---
+Camille: There's a random PDF here. I can delete it.
 
-(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
+//(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
 
--> Click on the file
+// -> Click on the file
 
-(Now the icon of the trash bin is GLOWING.)
+// (Now the icon of the trash bin is GLOWING.)
 
--> Drag and drop the file to the trash bin
+-> Drag and drop the file to the trash bin.
     <<jump Shaken>>
--> Drop the file in place
+-> Open file first.
     // Makes Anna feel good about what you're doing. You are waiting for her answer
     // ZOOM OUT
-    <<set $zoom += 1>>
-    (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
+    // <<set $zoom += 1>>
+    // (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
     <<jump Main>>
     
 //=========================
@@ -51,17 +55,18 @@ title: FirstFile
 title: Main
 position: -349,-228
 ---
-Anna: What on earth is this file?// TODO : Anna can say something unique here
+//Anna: What on earth is this file?// TODO : Anna can say something unique here
 
--> Open the file
+//-> Open the file
 
-(It's a pdf with a tutorial for knitting a hat with cat ears.)
+//(It's a pdf with a tutorial for knitting a hat with cat ears.)
 
-Anna: Oh! I wanted to make those for carnaval last year.
-Anna: I wanted to go with my friend Dana.
-Anna: We ended up not going.
-Anna: ...
-Anna: You can delete the file. I won't need it anymore.
+Anna: Oh! I wanted to make those for carnival last year.
+Anna: One for me and one for Dana.
+Anna: She said we would look ridiculous. (She laughs.)
+Anna: We ended up not going. I don't need the pattern anymore.
+
+//(The close button of the PDF begins to GLOW.)
 
 -> Drag and drop the file to the trash bin
 -> Keep the file
