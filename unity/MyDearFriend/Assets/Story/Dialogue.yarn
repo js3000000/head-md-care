@@ -17,7 +17,7 @@ Camille: No problem. Let's see what's wrong.
 title: WarningWindow
 ---
 //Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
-
+Hello
 Camille: Your hard drive is full.
 Anna: Full? Already?
 Anna: I suppose I kept too many things. 
@@ -31,8 +31,10 @@ Anna: I suppose I kept too many things.
 
 title: FirstFile
 ---
+
 Camille: There's a random PDF here. I can delete it.
 
+<<startPulsatingFile DocumentIcon_2>>
 //(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
 
 // -> Click on the file
