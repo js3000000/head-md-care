@@ -10,7 +10,7 @@ position: -420,-513
 // IMPORTANT : Opportunity to introduce Anna's uniqueness
 Anna: Thank you for helping me.
 Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
-Camille: No problem. Let's see what's wrong.
+Camille: Oh! No problem. Let's see what's wrong.
 
 <<showWarning ErrorBox>>
 ===
@@ -19,7 +19,8 @@ title: WarningWindow
 //Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
 Hello
 Camille: Your hard drive is full.
-Anna: Full? Already?
+Anna: Full? How is that possible? Don't computers have infinite space?//TODO: maybe find another word than infinite? She's not that clueless I'd say, i feel like caricaturizing an old lady
+Camille: Haha, not really.
 Anna: I suppose I kept too many things. 
 
 <<startPulsating CloseButton>>
@@ -72,12 +73,12 @@ Anna: We ended up not going. I don't need the pattern anymore.
 
 //(The close button of the PDF begins to GLOW.)
 
--> Drag and drop the file to the trash bin
--> Keep the file
-    Anna: Please delete the file.
-    -> Delete the file.
+// -> Drag and drop the file to the trash bin
+// -> Keep the file
+//     Anna: Please delete the file.
+//     -> Delete the file.
 
-Anna: Thank you.
+Anna: Thank you. I'm sorry you're spending your time deleting files instead of studying or enjoying your free time.
 // I'm letting you work now.
 Anna: Would you like something to drink ?
 -> Yes, with pleasure.
