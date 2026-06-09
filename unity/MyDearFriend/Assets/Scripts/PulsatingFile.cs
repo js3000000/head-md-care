@@ -36,10 +36,22 @@ public class PulsatingFile : MonoBehaviour, IPointerClickHandler
         pulsing = true;
     }
 
+    [YarnCommand("stopPulsatingFile")]
+    public void stopPulsating()
+    {
+        pulsing = false;
+        transform.localScale = originalScale; // Reset to original scale when stopping
+    }
+
     void OnNodeComplete(string nodeName)
     {
         if (nodeName == clickNodeName)
             pulsing = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        pulsing = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)

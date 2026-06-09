@@ -2,6 +2,7 @@ title:Shaken
 position: 0,0
 ---
   // Makes Anna feel a bit insecure.
+    <<stopPulsatingFile DocumentIcon_2>>
     Anna: (A little shaken) Oh, wait! What are you doing ?
     Anna: I just... I need to know what disappears.
 
@@ -9,11 +10,11 @@ position: 0,0
       Camille: You're right. Sorry. I should have asked.
       Anna: No, no. I am the one who asked you for help.
       Anna: Perhaps, we can look at it together?
-      <<jump KnittingPattern>>
+      <<startPulsatingFile DocumentIcon_2>>
     -> Explain that space needs to be freed quickly.
       Camille: We need to delete things if you want the computer to work.
       Anna: Yes. Of, course.
       Anna: Still, let's not be too quick.
-      <<jump KnittingPattern>>
+      <<startPulsatingFile DocumentIcon_2>>
 
 ===

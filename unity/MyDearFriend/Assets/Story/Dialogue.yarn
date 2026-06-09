@@ -36,61 +36,74 @@ title: FirstFile
 Camille: There's a random PDF here. I can delete it.
 
 <<startPulsatingFile DocumentIcon_2>>
-//(A file named "fehju_3452.pdf" on the desktop is GLOWING.)
 
-// -> Click on the file
+//A file named "knitting pattern.pdf" on the desktop is pulsating
+// -> user clicked to open the file first
+//      jump to Knitting Pattern
 
-// (Now the icon of the trash bin is GLOWING.)
-
-// -> Drag and drop the file to the trash bin.
+// -> user tries to drag the file to the trash bin. script should not let it put in the trash but stop and put back the file where it was before going to the shaken node
 //     <<jump Shaken>>
-// -> Open file first.
-//     // Makes Anna feel good about what you're doing. You are waiting for her answer
-//     // ZOOM OUT
-//     // <<set $zoom += 1>>
-//     // (The camera is slighty zooming out, letting you see there is a world around the computer screen.)
-//     <<jump KnittingPattern>>
     
-//=========================
-// Main branch of the story
-//=========================
 ===
 title: KnittingPattern
 position: -349,-228
 ---
-//Anna: What on earth is this file?// TODO : Anna can say something unique here
-
-//-> Open the file
-
 //(It's a pdf with a tutorial for knitting a hat with cat ears.)
 
 Anna: Oh! I wanted to make those for carnival last year.
 Anna: One for me and one for Dana.
 Anna: She said we would look ridiculous. (She laughs.)
 Anna: We ended up not going. I don't need the pattern anymore.
+Camille: We can leave this one for later, if you want.
+Anna: You are kind. But I think we should delete it.
 
 <<startPulsating CloseButtonPattern>>
+<<startPulsatingFile DocumentIcon_2>>
 
-//(The close button of the PDF begins to GLOW.)
+//(The close button of the PDF begins to pulsate.)
+//user closes the file
+//trashbin pulsates
+//user drags and drops file to trash
+ //camera zooms out if file is dropped in trash
 
-// -> Drag and drop the file to the trash bin
-// -> Keep the file
-//     Anna: Please delete the file.
-//     -> Delete the file.
+===
+title: Drink
+position: -349,-228
+---
 
+<<ZoomOutCamera>>
 Anna: Thank you. I'm sorry you're spending your time deleting files instead of studying or enjoying your free time.
+Camille: Oh, no problem.
 // I'm letting you work now.
-Anna: Would you like something to drink ?
--> Yes, with pleasure.
--> hmmm, mmmm. // TODO: Should we add points when she's gentle or not ?
--> No.
+Anna: Would you like something to drink?
+Anna: Coffee? Tea? I also have those terrible little biscuits my grandson loves.
 
-(You can hear Anna walking away.)
+-> Coffee would be nice, thank you.
+    Anna: Good. People work better with a little bit of fuel, especially my coffee!
+    <<ZoomOutCamera>>
+    <<jump AloneAtDesktop>>
+-> No, thank you. I should continue. // TODO: Should we add points when she's gentle or not ?
+    Anna: Serious student! Don't let me distract you.
+    Anna: I will be in the kitchen if you need me.
+    <<jump AloneAtDesktop>>
+-> Maybe later.
+    Anna: Alright!
+    <<jump AloneAtDesktop>>
 
-(You are still facing Anna's desktop.)
+===
 
-(A NOTIFICATION alerting Anna that her inbox is full appears at the corner of the screen.)
-(The mailbox icon is GLOWING.)
+title: AloneAtDesktop
+---
+//(You can hear Anna walking away.)
+
+//(You are still facing Anna's desktop.)
+
+//(A NOTIFICATION alerting Anna that her inbox is full appears at the corner of the screen.)
+//(The mailbox icon is GLOWING.)
+
+<<activateObject DesktopScreen>>
+
+Camille: hmmm...
 
 -> Open the mailbox.
     <<jump Mailbox>>

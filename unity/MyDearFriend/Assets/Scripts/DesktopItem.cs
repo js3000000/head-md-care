@@ -16,9 +16,9 @@ public class DesktopItem : MonoBehaviour,
 
     public string clickNodeName;
     public string trashNodeName;
+    public string trashAfterOpenNodeName;
     public string dropElsewhereNodeName;
 
-    [Header("Drag")]
     public Camera cam;
 
     [Header("Selection Scale")]
@@ -48,6 +48,12 @@ public class DesktopItem : MonoBehaviour,
     private bool isDragging;
     private bool wasDragged;
     private bool isOverTrash;
+
+    // Track first interaction for blocking initial trash attempt
+    private bool isFirstInteraction = true;
+
+    // Track whether the file has been opened at least once
+    private bool hasOpenedFile = false;
 
     void Start()
     {
@@ -106,6 +112,10 @@ public class DesktopItem : MonoBehaviour,
         {
             fileContentObject.SetActive(true);
         }
+
+        // Mark the file as opened so trashing is no longer treated as the first interaction
+        hasOpenedFile = true;
+        isFirstInteraction = false;
 
         // Start Yarn dialogue for clicking/opening this file
         if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
@@ -171,9 +181,37 @@ public class DesktopItem : MonoBehaviour,
 
         if (IsPointerOverTrash(eventData))
         {
-            if (dialogueRunner != null && !string.IsNullOrEmpty(trashNodeName))
+            // Block deletion only on the first trash attempt if the file has never been opened
+            if (isFirstInteraction && !hasOpenedFile)
             {
-                dialogueRunner.StartDialogue(trashNodeName);
+                // Return file to original position
+                transform.position = dragStartPosition;
+                
+                // Mark first interaction as complete
+                isFirstInteraction = false;
+                
+                // Reset material and trigger the first-time trash response
+                ResetMaterial();
+                
+                if (dialogueRunner != null && !string.IsNullOrEmpty(trashNodeName))
+                {
+                    dialogueRunner.StartDialogue(trashNodeName);
+                }
+                
+                return;
+            }
+
+            // Choose the correct trash node after the file has been opened
+            string nodeToPlay = trashNodeName;
+
+            if (hasOpenedFile && !string.IsNullOrEmpty(trashAfterOpenNodeName))
+            {
+                nodeToPlay = trashAfterOpenNodeName;
+            }
+
+            if (dialogueRunner != null && !string.IsNullOrEmpty(nodeToPlay))
+            {
+                dialogueRunner.StartDialogue(nodeToPlay);
             }
 
             Destroy(gameObject);
