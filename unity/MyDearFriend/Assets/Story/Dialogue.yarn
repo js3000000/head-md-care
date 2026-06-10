@@ -106,6 +106,7 @@ title: AloneAtDesktop
 //(The mailbox icon is GLOWING.)
 
 <<activateObject DesktopScreen>>
+<<startPulsatingFile MailFullNotification>>
 
 Camille: hmmm...
 
