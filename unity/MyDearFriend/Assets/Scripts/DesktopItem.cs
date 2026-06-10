@@ -11,6 +11,9 @@ public class DesktopItem : MonoBehaviour,
     IDragHandler,
     IEndDragHandler
 {
+    public bool canClick = false;
+    public bool canDrag = false;
+
     [Header("Yarn")]
     public DialogueRunner dialogueRunner;
 
@@ -79,6 +82,14 @@ public class DesktopItem : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!canDrag)
+        {
+            return;
+        }
+        if (!canClick)
+        {
+            return;
+        }
         // Scale up the selected file/folder
         transform.localScale = originalScale * selectedScaleMultiplier;
 
@@ -88,6 +99,10 @@ public class DesktopItem : MonoBehaviour,
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!canClick)
+        {
+            return;
+        }
         // Stop trash animation when player releases
         StopTrashPulse();
 
@@ -98,11 +113,27 @@ public class DesktopItem : MonoBehaviour,
         }
     }
 
+    [YarnCommand("setCanClick")]
+    public void canBeClicked(bool value)
+    {
+        canClick = value;
+    }
+
+    [YarnCommand("setCanDrag")]
+    public void canBeDragged(bool value)
+    {
+        canDrag = value;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!canClick)
+        {
+            return;
+        }
         // Mark the file as opened so trashing is no longer treated as the first interaction
         hasOpenedFile = true;
-        //isFirstInteraction = false;
+        isFirstInteraction = false;
 
         // Prevent click from firing after drag
         if (wasDragged)
@@ -120,12 +151,17 @@ public class DesktopItem : MonoBehaviour,
         // Start Yarn dialogue for clicking/opening this file
         if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
         {
+            Debug.Log($"DesktopItem: OnPointerClick received, starting dialogue node '{clickNodeName}' if applicable.");
             dialogueRunner.StartDialogue(clickNodeName);
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!canDrag)
+        {
+            return;
+        }
         isDragging = true;
         wasDragged = true;
 
@@ -152,6 +188,10 @@ public class DesktopItem : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(!canDrag)
+        {
+            return;
+        }
         Ray ray = cam.ScreenPointToRay(eventData.position);
 
         // Drag on XY plane, keeping Z fixed
@@ -173,6 +213,10 @@ public class DesktopItem : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!canDrag)
+        {
+            return;
+        }
         isDragging = false;
 
         transform.localScale = originalScale;

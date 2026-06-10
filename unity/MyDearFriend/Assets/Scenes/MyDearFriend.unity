@@ -23340,6 +23340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f4e6f3e079241e0804a3c1fc771de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulsatingFile
+  canClick: 0
   dialogueRunner: {fileID: 1006168728}
   clickNodeName: KnittingPattern
   openedFile: {fileID: 1235684236}
@@ -28386,14 +28387,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fe411a5dc264e3bb9333191ca24955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DesktopItem
+  canClick: 0
+  canDrag: 0
   dialogueRunner: {fileID: 1006168728}
-  clickNodeName: 
+  clickNodeName: KnittingPattern
   trashNodeName: Shaken
   trashAfterOpenNodeName: Drink
   dropElsewhereNodeName: 
   cam: {fileID: 0}
   selectedScaleMultiplier: 1.15
-  fileContentObject: {fileID: 0}
+  fileContentObject: {fileID: 1235684236}
   trashHoverMaterial: {fileID: 2100000, guid: b36fcf5c2b7c3448e880bbf9ef242953, type: 2}
   trashTransform: {fileID: 6645823804667868864}
   trashBigScale: 1.3

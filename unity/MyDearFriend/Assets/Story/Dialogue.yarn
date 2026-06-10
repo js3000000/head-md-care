@@ -36,6 +36,8 @@ title: FirstFile
 Camille: There's a random PDF here. I can delete it.
 
 <<startPulsatingFile DocumentIcon_2>>
+<<setCanClick DocumentIcon_2 true>>
+<<setCanDrag DocumentIcon_2 true>>
 
 //A file named "knitting pattern.pdf" on the desktop is pulsating
 // -> user clicked to open the file first
@@ -49,6 +51,7 @@ title: KnittingPattern
 position: -349,-228
 ---
 //(It's a pdf with a tutorial for knitting a hat with cat ears.)
+<<setCanClick DocumentIcon_2 false>>
 
 Anna: Oh! I wanted to make those for carnival last year.
 Anna: One for me and one for Dana.
@@ -59,6 +62,7 @@ Anna: You are kind. But I think we should delete it.
 
 <<startPulsating CloseButtonPattern>>
 <<startPulsatingFile DocumentIcon_2>>
+<<setCanDrag DocumentIcon_2 true>>
 
 //(The close button of the PDF begins to pulsate.)
 //user closes the file
