@@ -100,6 +100,10 @@ public class DesktopItem : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Mark the file as opened so trashing is no longer treated as the first interaction
+        hasOpenedFile = true;
+        //isFirstInteraction = false;
+
         // Prevent click from firing after drag
         if (wasDragged)
         {
@@ -112,10 +116,6 @@ public class DesktopItem : MonoBehaviour,
         {
             fileContentObject.SetActive(true);
         }
-
-        // Mark the file as opened so trashing is no longer treated as the first interaction
-        hasOpenedFile = true;
-        isFirstInteraction = false;
 
         // Start Yarn dialogue for clicking/opening this file
         if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))
