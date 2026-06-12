@@ -9,8 +9,9 @@ position: -420,-513
 
 // IMPORTANT : Opportunity to introduce Anna's uniqueness
 Anna: Thank you for helping me.
-Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
-Camille: Oh! No problem. Let's see what's wrong.
+Anna: ... My computer has been very slow these past few weeks. 
+Anna: It always sounds as if the vacuum is on.
+Camille (You): Oh! No problem. Let's see what's wrong.
 
 <<showWarning ErrorBox>>
 ===
@@ -18,10 +19,10 @@ title: WarningWindow
 ---
 //Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
 Hello
-Camille: Your hard drive is full.
+Camille (You): Your hard drive is full.
 Anna: Full? How is that possible? Don't computers have infinite space?//TODO: maybe find another word than infinite? She's not that clueless I'd say, i feel like caricaturizing an old lady
-Camille: Haha, not really.
-Anna: I suppose I kept too many things. 
+Camille (You): Haha, not really.
+Anna: I suppose I kept too many things.
 
 <<startPulsating CloseButton>>
 
@@ -33,7 +34,7 @@ Anna: I suppose I kept too many things.
 title: FirstFile
 ---
 
-Camille: There's a random PDF here. I can delete it.
+Camille (You): There's a random PDF here. I can delete it.
 
 <<startPulsatingFile DocumentIcon_2>>
 <<setCanClick DocumentIcon_2 true>>
@@ -57,7 +58,7 @@ Anna: Oh! I wanted to make those for carnival last year.
 Anna: One for me and one for Dana.
 Anna: She said we would look ridiculous. (She laughs.)
 Anna: We ended up not going. I don't need the pattern anymore.
-Camille: We can leave this one for later, if you want.
+Camille (You): We can leave this one for later, if you want.
 Anna: You are kind. But I think we should delete it.
 
 <<startPulsating CloseButtonPattern>>
@@ -77,7 +78,7 @@ position: -349,-228
 
 <<ZoomOutCamera 37.9 0.02 -0.24 1>>
 Anna: Thank you. I'm sorry you're spending your time deleting files instead of studying or enjoying your free time.
-Camille: Oh, no problem.
+Camille (You): Oh, no problem.
 // I'm letting you work now.
 Anna: Would you like something to drink?
 Anna: Coffee? Tea? I also have those terrible little biscuits my grandson loves.
@@ -117,7 +118,7 @@ title: Mailbox
 //mailbox opens
 //first email is from exit
 //Anna comes back with coffee
-Camille: Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
+Camille (You): Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
 Anna: Ha, nothing to worry about. Really.
 -> Ask about email.
     <<ZoomOutCamera 56 0.02 -0.10 1>>
@@ -130,7 +131,7 @@ position: -462,-79
 
 //(You see a mail from Exit association)
 //(It's a pdf brochure for helping relatives through the process of grieving someone who passed away)
-Camille: I didn't mean to read, but I'm really sorry if you experienced a loss. I know it can be very hard.
+Camille (You): I didn't mean to read, but I'm really sorry if you experienced a loss. I know it can be very hard.
 Anna: Thank you. She was actually ready to go, but it really doesn't make it easier.
 <<jump Coffee>>
 ===
@@ -139,16 +140,38 @@ position: -374,58
 ---
 
 Anna: There, I left some coffee for you next to your computer.
-Camille: Thank you.
+Camille (You): Thank you.
 
-<<jump EndOfStory>>
+<<jump Image>>
 
 //===============
 // End Of Story
 //===============
 ===
-title: EndOfStory
-position: -355,292
+
+title: Image
 ---
-Developpers team: That's all folks!
+Anna: Why is there a file different from all others on the screen ?
+Camille (You): Hmmm, that's an image. Do you want to open it ?
+Anna: Yes.
+
+//pulsate image
+//open image
+
+<<jump OpenedImage>>
+===
+title: OpenedImage
+---
+Anna: ...
+
+//Anna va se poser devant la fenêtre, regarde dehors
+
+Camille (You):
+-> Are you okay?
+    Anna: Let's continue another time... 
+    Anna: Thank you for your help, I really appreciated your presence today.
+-> Say nothing.
+    Anna: ...
+    Anna: Let's continue another time... 
+    Anna: Thank you for your help, I really appreciated your presence today.
 ===
