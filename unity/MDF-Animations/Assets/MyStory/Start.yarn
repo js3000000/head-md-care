@@ -1,0 +1,20 @@
+﻿title: Start
+---
+Anna: You can delete this file.
+<<ZoomOutCamera 5 5>>
+<<AnnaMoves Anna "Kitchen">>
+
+Anna: I left coffee for you.
+<<ZoomOutCamera 5 5>>
+<<AnnaMoves Anna Window">>
+
+
+Anna: I organised a blindtest next friday. Would you help me with the playlist ?
+<<ZoomOutCamera 20 5>>
+<<AnnaMoves Anna "Couch">>
+<<AnnaSits Anna>>
+
+
+
+
+===
