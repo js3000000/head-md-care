@@ -4,8 +4,6 @@ using Yarn.Unity;
 
 public class PulsatingFile : MonoBehaviour
 {
-    public bool canClick = false;
-
     public float pulseAmount = 0.1f;
     public float pulseSpeed = 3f;
 
@@ -40,8 +38,8 @@ public class PulsatingFile : MonoBehaviour
         transform.localScale = originalScale; // Reset to original scale when stopping
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        pulsing = false;
-    }
+    // public void OnPointerDown(PointerEventData eventData)
+    // {
+    //     pulsing = false;
+    // }
 }

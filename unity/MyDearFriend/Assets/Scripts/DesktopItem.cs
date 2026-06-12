@@ -13,6 +13,7 @@ public class DesktopItem : MonoBehaviour,
 {
     public bool canClick = false;
     public bool canDrag = false;
+    private bool deleteAfterClick = false;
 
     [Header("Yarn")]
     public DialogueRunner dialogueRunner;
@@ -125,6 +126,12 @@ public class DesktopItem : MonoBehaviour,
         canDrag = value;
     }
 
+    [YarnCommand("deleteItem")]
+    public void deleteItem()
+    {
+        deleteAfterClick = true;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!canClick)
@@ -153,6 +160,11 @@ public class DesktopItem : MonoBehaviour,
         {
             Debug.Log($"DesktopItem: OnPointerClick received, starting dialogue node '{clickNodeName}' if applicable.");
             dialogueRunner.StartDialogue(clickNodeName);
+        }
+
+        if(deleteAfterClick)
+        {
+            Destroy(gameObject);
         }
     }
 

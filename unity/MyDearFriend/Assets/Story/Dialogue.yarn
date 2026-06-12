@@ -108,43 +108,39 @@ title: AloneAtDesktop
 <<activateObject DesktopScreen>>
 <<startPulsatingFile MailFullNotification>>
 
-Camille: hmmm...
-
--> Open the mailbox.
-    <<jump Mailbox>>
--> Keep working on the desktop.
-    <<jump Desktop>>
-
+<<deleteItem MailFullNotification>>
+<<setCanClick MailFullNotification true>>
 ===
-title: Main2
+title: Mailbox
+---
+//user clicks
+//mailbox opens
+//first email is from exit
+//Anna comes back with coffee
+Camille: Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
+Anna: Ha, nothing to worry about. Really.
+-> Ask about email.
+    <<jump ExitMail>>
+-> Don't ask and close mailbox.
+===
+title: ExitMail
+position: -462,-79
+---
+
+//(You see a mail from Exit association)
+//(It's a pdf brochure for helping relatives through the process of grieving someone who passed away)
+Camille: I didn't mean to read, but I'm really sorry if you experienced a loss. I know it can be very hard.
+Anna: Thank you. She was actually ready to go, but it really doesn't make it easier.
+<<jump Coffee>>
+===
+title: Coffee
 position: -374,58
 ---
 
 Anna: There, I left some coffee for you next to your computer.
-<<if $zoom >= 1>>
-    <<set $zoom += 1>> // Maybe head rotate. IDK (I don't know...)
-    (The camera zooms out enough for you to see that Anna left a mug and a cookie.)
-    (There's a terrible photomontage of Anna surfing a dolphin.)
-    -> Ask Anna about the mug.
-        Anna: Oooh. Haha. I'm so used to it, I forgot the picture.
-        Anna: I went to an amusement park with my nephews some time ago.
-        Anna: I think Dana was there. She used to really enjoy kids attractions.
-        << set $zoom +=10>>
-        (Camera zooms out  for you to see the table and Anna standing by the table.)
-    -> Eat the cookie.
-        << set $zoom +=1>>
-    -> Take a sip.
-        << set $zoom +=1>>
-    -> Keep working.
-        <<set $zoom -= 2>>
-        (The camera zooms back in the computer desktop.)
-    
-    <<endif>>
+Camille: Thank you.
 
-
-
-    <<jump Desktop>>
-
+<<jump EndOfStory>>
 
 //===============
 // End Of Story
