@@ -25,6 +25,15 @@ public class CameraZoomOut : MonoBehaviour
     
     private static CameraZoomOut instance;
 
+    void Start()
+    {
+        Camera cam = Camera.main;
+        if (cam != null)
+        {
+            cam.usePhysicalProperties = true;
+        }
+    }
+
     private void Awake()
     {
         instance = this;
@@ -33,48 +42,52 @@ public class CameraZoomOut : MonoBehaviour
     // --- Yarn command to trigger the camera zoom out effect ---
 
     [YarnCommand("ZoomOutCamera")]
-    public static void ZoomOutCamera(float zoomAmount = 10f, float zoomDuration = 1f)
+    public static void ZoomOutCamera(
+        float targetFov = 77.32661f,
+        float lensShiftX = 0f,
+        float lensShiftY = 0f,
+        float zoomDuration = 1f)
     {
-        // Check if the CameraZoomOut instance exists in the scene
         if (instance == null)
         {
             Debug.LogError("ZoomOutCamera failed: no CameraZoomOut instance exists in the scene.");
             return;
         }
 
-        // Coroutine let Unity run the zoom out effect over multiple frames without blocking the main thread
-        instance.StartCoroutine(instance.ZoomOutRoutine(zoomAmount, zoomDuration));
+        instance.StartCoroutine(
+            instance.ZoomOutRoutine(
+                targetFov,
+                new Vector2(lensShiftX, lensShiftY),
+                zoomDuration));
     }
 
     // --- Coroutine that performs the zoom out effect over time ---
-    private IEnumerator ZoomOutRoutine(float zoomAmount, float zoomDuration)
+    private IEnumerator ZoomOutRoutine(float targetFov, Vector2 targetLensShift, float zoomDuration)
     {
-        // Get the main camera in the scene
-        var cam = Camera.main;
+        Camera cam = Camera.main;
         if (cam == null)
         {
             Debug.LogError("ZoomOutCamera failed: no camera tagged MainCamera was found.");
             yield break;
         }
 
-        // Store initial field of view and calculate target field of view
         float startFov = cam.fieldOfView;
-        float targetFov = startFov + zoomAmount;
-        
-        // Track elapsed time for the zoom effect
-        float elapsed = 0f;
+        Vector2 startLensShift = cam.lensShift;
 
-        // Loop until the zoom duration has elapsed, updating the camera's field of view each frame
+        float elapsed = 0f;
         while (elapsed < zoomDuration)
         {
             float t = elapsed / zoomDuration;
             float easedT = zoomCurve.Evaluate(t);
+
             cam.fieldOfView = Mathf.Lerp(startFov, targetFov, easedT);
+            cam.lensShift = Vector2.Lerp(startLensShift, targetLensShift, easedT);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        //cam.fieldOfView = targetFov;
+        cam.fieldOfView = targetFov;
+        cam.lensShift = targetLensShift;
     }
 }

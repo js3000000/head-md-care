@@ -75,7 +75,7 @@ title: Drink
 position: -349,-228
 ---
 
-<<ZoomOutCamera>>
+<<ZoomOutCamera 37.9 0.02 -0.24 1>>
 Anna: Thank you. I'm sorry you're spending your time deleting files instead of studying or enjoying your free time.
 Camille: Oh, no problem.
 // I'm letting you work now.
@@ -84,7 +84,7 @@ Anna: Coffee? Tea? I also have those terrible little biscuits my grandson loves.
 
 -> Coffee would be nice, thank you.
     Anna: Good. People work better with a little bit of fuel, especially my coffee!
-    <<ZoomOutCamera>>
+    <<ZoomOutCamera 47.9 0.02 -0.20 1>>
     <<jump AloneAtDesktop>>
 -> No, thank you. I should continue. // TODO: Should we add points when she's gentle or not ?
     Anna: Serious student! Don't let me distract you.
@@ -120,6 +120,7 @@ title: Mailbox
 Camille: Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
 Anna: Ha, nothing to worry about. Really.
 -> Ask about email.
+    <<ZoomOutCamera 56 0.02 -0.10 1>>
     <<jump ExitMail>>
 -> Don't ask and close mailbox.
 ===
