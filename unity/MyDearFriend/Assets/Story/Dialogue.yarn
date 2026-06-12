@@ -119,7 +119,7 @@ title: Mailbox
 //first email is from exit
 //Anna comes back with coffee
 Camille (You): Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
-Anna: Ha, nothing to worry about. Really.
+Anna: Ah, nothing to worry about. Really.
 -> Ask about email.
     <<ZoomOutCamera 56 0.02 -0.10 1>>
     <<jump ExitMail>>
@@ -163,6 +163,7 @@ Anna: Yes.
 title: OpenedImage
 ---
 Anna: ...
+<<AnnaMoves Anna Couch>>
 
 //Anna va se poser devant la fenêtre, regarde dehors
 
