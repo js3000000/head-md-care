@@ -124,6 +124,7 @@ Anna: Ah, nothing to worry about. Really.
     <<ZoomOutCamera 56 0.02 -0.10 1>>
     <<jump ExitMail>>
 -> Don't ask and close mailbox.
+    <<startPulsating CloseButtonMail>>
 ===
 title: ExitMail
 position: -462,-79
@@ -133,7 +134,9 @@ position: -462,-79
 //(It's a pdf brochure for helping relatives through the process of grieving someone who passed away)
 Camille (You): I didn't mean to read, but I'm really sorry if you experienced a loss. I know it can be very hard.
 Anna: Thank you. She was actually ready to go, but it really doesn't make it easier.
-<<jump Coffee>>
+Anna: You can leave the email. I'll look at it later.
+<<startPulsating CloseButtonMail>>
+
 ===
 title: Coffee
 position: -374,58
@@ -155,10 +158,10 @@ Anna: Why is there a file different from all others on the screen ?
 Camille (You): Hmmm, that's an image. Do you want to open it ?
 Anna: Yes.
 
+<<startPulsatingFile HikingPNG>>
+<<setCanClick HikingPNG true>>
 //pulsate image
 //open image
-
-<<jump OpenedImage>>
 ===
 title: OpenedImage
 ---
