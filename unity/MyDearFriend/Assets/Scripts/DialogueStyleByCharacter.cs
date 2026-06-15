@@ -12,6 +12,9 @@ public class DialogueStyleByCharacter : MonoBehaviour
     public Color annaColor = Color.white;
     public Color camilleColor = Color.white;
 
+    public Color annaTextColor = Color.white;
+    public Color camilleTextColor = Color.white;
+
     public UnityEngine.UI.Image bubbleImage;
 
     void LateUpdate()
@@ -24,11 +27,13 @@ public class DialogueStyleByCharacter : MonoBehaviour
         {
             bubble.anchoredPosition = annaPosition;
             if (bubbleImage) bubbleImage.color = annaColor;
+            if (characterName) characterName.color = annaTextColor;
         }
-        else if (speaker == "Camille")
+        else if (speaker == "Camille (You)")
         {
             bubble.anchoredPosition = camillePosition;
             if (bubbleImage) bubbleImage.color = camilleColor;
+            if (characterName) characterName.color = camilleTextColor;
         }
     }
 }
