@@ -8236,10 +8236,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.05
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -2.52, z: 0}
 --- !u!114 &970931646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10148,7 +10148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 627c0a181e91c4498b393bdb92a1b327, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10755,7 +10755,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.08, y: 3.9, z: 14.37}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1435661933 stripped
 Transform:
@@ -18213,9 +18213,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7196179903864065534}
-  - component: {fileID: 7536254810541987655}
   - component: {fileID: 7536254810541987654}
   - component: {fileID: 7536254810541987653}
+  - component: {fileID: 7536254810541987655}
   m_Layer: 0
   m_Name: KnittingPDF
   m_TagString: Untagged
@@ -18282,8 +18282,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.09, y: 4.37, z: 3.09}
+  m_Center: {x: 0.61, y: -3.03, z: 4.6}
 --- !u!23 &7668353327847165171
 MeshRenderer:
   m_ObjectHideFlags: 0
