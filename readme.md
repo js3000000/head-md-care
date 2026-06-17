@@ -1,6 +1,6 @@
 # Dear Friend
 
-![[./images/cover.png]]
+![cover](./images/cover.png)
 ## Overview
 
 **Dear Friend** is an interactive storytelling project developed in Unity.  
