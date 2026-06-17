@@ -1,6 +1,6 @@
 # Dear Friend
 
-![cover](./images/cover.png)
+![cover](./presskit/cover.png)
 ## Overview
 
 **Dear Friend** is an interactive storytelling project developed in Unity.  
