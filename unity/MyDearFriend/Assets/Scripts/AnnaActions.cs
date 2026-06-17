@@ -8,6 +8,7 @@ public class AnnaActions : MonoBehaviour
     public Transform position1;
     public Transform position2;
     public Transform position3;
+    public Transform position4;
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -28,6 +29,7 @@ public class AnnaActions : MonoBehaviour
             "Kitchen" => position1,
             "Window" => position2,
             "Couch" => position3,
+            "Computer" => position4,
             _ => null
         };
 
@@ -51,10 +53,14 @@ public class AnnaActions : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(targetPosition.position);
 
+        //rotate to face the target position while moving
+        transform.rotation = targetPosition.rotation;
+    
         while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
             yield return null;
 
         agent.ResetPath();
+        transform.rotation = targetPosition.rotation;
         animator.SetBool("IsWalking", false);
 
         
@@ -92,7 +98,7 @@ public class AnnaActions : MonoBehaviour
         agent.ResetPath();
 
         //transform.position = position3.position;
-        //transform.rotation = position3.rotation;
+        transform.rotation = position3.rotation;
 
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsSitting", true);

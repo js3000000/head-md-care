@@ -7,10 +7,10 @@ position: -420,-513
 
 <<declare $zoom = 0>> // De 0 à 100
 
+//<<AnnaMoves Anna Kitchen>>
 // IMPORTANT : Opportunity to introduce Anna's uniqueness
 Anna: Thank you for helping me.
-Anna: ... My computer has been very slow these past few weeks. 
-Anna: It always sounds as if the vacuum is on.
+Anna: ... My computer has been very slow these past few weeks. It always sounds as if the vacuum is on.
 Camille (You): Oh! No problem. Let's see what's wrong.
 
 <<showWarning ErrorBox>>
@@ -18,13 +18,16 @@ Camille (You): Oh! No problem. Let's see what's wrong.
 title: WarningWindow
 ---
 //Computer: Warning : Storage FULL!!! Please make space by deleting unnecessary files.
+
 Hello
+<<PlaySound Audio Warning>>
 Camille (You): Your hard drive is full.
 Anna: Full? How is that possible? Don't computers have infinite space?//TODO: maybe find another word than infinite? She's not that clueless I'd say, i feel like caricaturizing an old lady
 Camille (You): Haha, not really.
 Anna: I suppose I kept too many things.
 
 <<startPulsating CloseButton>>
+<<setCanClickForCloseButton CloseButton true>>
 
 // (The close button at the corner of the window is GLOWING.)
 
@@ -62,6 +65,7 @@ Camille (You): We can leave this one for later, if you want.
 Anna: You are kind. But I think we should delete it.
 
 <<startPulsating CloseButtonPattern>>
+<<setCanClickForCloseButton CloseButtonPattern true>>
 <<startPulsatingFile DocumentIcon_2>>
 <<setCanDrag DocumentIcon_2 true>>
 
@@ -75,8 +79,8 @@ Anna: You are kind. But I think we should delete it.
 title: Drink
 position: -349,-228
 ---
-
-<<ZoomOutCamera 37.9 0.02 -0.24 1>>
+<<PlaySound Audio ZoomOut>>
+<<ZoomOutCamera 37.9 0.02 -0.24 10>>
 Anna: Thank you. I'm sorry you're spending your time deleting files instead of studying or enjoying your free time.
 Camille (You): Oh, no problem.
 // I'm letting you work now.
@@ -85,14 +89,17 @@ Anna: Coffee? Tea? I also have those terrible little biscuits my grandson loves.
 
 -> Coffee would be nice, thank you.
     Anna: Good. People work better with a little bit of fuel, especially my coffee!
-    <<ZoomOutCamera 47.9 0.02 -0.20 1>>
+    <<ZoomOutCamera 47.9 0.02 -0.20 15>>
+    <<AnnaMoves Anna Kitchen>>
     <<jump AloneAtDesktop>>
 -> No, thank you. I should continue. // TODO: Should we add points when she's gentle or not ?
     Anna: Serious student! Don't let me distract you.
     Anna: I will be in the kitchen if you need me.
+    <<AnnaMoves Anna Kitchen>>
     <<jump AloneAtDesktop>>
 -> Maybe later.
     Anna: Alright!
+    <<AnnaMoves Anna Kitchen>>
     <<jump AloneAtDesktop>>
 
 ===
@@ -111,6 +118,7 @@ title: AloneAtDesktop
 
 <<deleteItem MailFullNotification>>
 <<setCanClick MailFullNotification true>>
+<<AnnaMoves Anna Computer >>
 ===
 title: Mailbox
 ---
@@ -118,30 +126,33 @@ title: Mailbox
 //mailbox opens
 //first email is from exit
 //Anna comes back with coffee
+<<AnnaMoves Anna Computer>>
 Camille (You): Oh, sorry. I didn't mean to snoop. It's just that your mailbox is also full and I clicked on the notification out of habit.
 Anna: Ah, nothing to worry about. Really.
 -> Ask about email.
-    <<ZoomOutCamera 56 0.02 -0.10 1>>
+    <<ZoomOutCamera 56 0.02 -0.10 15>>
     <<jump ExitMail>>
 -> Don't ask and close mailbox.
     <<startPulsating CloseButtonMail>>
+    <<setCanClickForCloseButton CloseButtonMail true>>
 ===
 title: ExitMail
 position: -462,-79
 ---
-
+<<AnnaMoves Anna Computer>>
 //(You see a mail from Exit association)
 //(It's a pdf brochure for helping relatives through the process of grieving someone who passed away)
 Camille (You): I didn't mean to read, but I'm really sorry if you experienced a loss. I know it can be very hard.
 Anna: Thank you. She was actually ready to go, but it really doesn't make it easier.
 Anna: You can leave the email. I'll look at it later.
 <<startPulsating CloseButtonMail>>
+<<setCanClickForCloseButton CloseButtonMail true>>
 
 ===
 title: Coffee
 position: -374,58
 ---
-
+<<AnnaMoves Anna Computer>>
 Anna: There, I left some coffee for you next to your computer.
 Camille (You): Thank you.
 
@@ -154,6 +165,7 @@ Camille (You): Thank you.
 
 title: Image
 ---
+<<AnnaMoves Anna Computer>>
 Anna: Why is there a file different from all others on the screen ?
 Camille (You): Hmmm, that's an image. Do you want to open it ?
 Anna: Yes.
@@ -166,8 +178,9 @@ Anna: Yes.
 title: OpenedImage
 ---
 Anna: ...
-<<AnnaMoves Anna Couch>>
-
+//<<AnnaMoves Anna Couch>>
+//<<AnnaSits Anna>>
+<<AnnaMoves Anna Window>>
 //Anna va se poser devant la fenêtre, regarde dehors
 
 Camille (You):
@@ -178,4 +191,10 @@ Camille (You):
     Anna: ...
     Anna: Let's continue another time... 
     Anna: Thank you for your help, I really appreciated your presence today.
+
+<<ZoomOutCamera 77.32 0 0 20>>
+
+
+
+<<AnnaSits Anna>>
 ===

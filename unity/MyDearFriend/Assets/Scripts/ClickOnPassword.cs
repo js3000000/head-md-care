@@ -1,30 +1,63 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Yarn.Unity;
+using System.Collections;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class ClickOnPassword : MonoBehaviour, IPointerDownHandler
 {
-   public DialogueRunner dialogueRunner;
-   public string dialogueNodeName;
-   public GameObject objectToActivate;
-   public GameObject objectToActivate2;
+    public DialogueRunner dialogueRunner;
+    public string dialogueNodeName;
 
+    public GameObject objectToActivate;
 
-   public void OnPointerDown(PointerEventData eventData)
-   {
-       if (dialogueRunner != null && !dialogueRunner.IsDialogueRunning)
-       {
-           dialogueRunner.StartDialogue(dialogueNodeName);
-       }
-       // destroy the parent object of the login button when clicked
-        Destroy(transform.parent.gameObject);
-        // activate the specified object
-        if (objectToActivate != null && objectToActivate2 != null)
+    public AudioClip inputSound;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        // Get AudioSource from this GameObject
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: use AudioSource clip automatically
+        if (inputSound == null)
         {
-            objectToActivate.SetActive(true);
-            //objectToActivate2.SetActive(true);
+            inputSound = audioSource.clip;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        StartCoroutine(HandleClick());
+    }
+
+    IEnumerator HandleClick()
+    {
+        // Play sound and wait until finished
+        if (inputSound != null)
+        {
+            audioSource.clip = inputSound;
+            audioSource.Play();
+
+            yield return new WaitUntil(() => !audioSource.isPlaying);
+
+            Debug.Log("Played click sound");
         }
 
-   }
+        // Start dialogue
+        if (dialogueRunner != null && !dialogueRunner.IsDialogueRunning)
+        {
+            dialogueRunner.StartDialogue(dialogueNodeName);
+        }
+
+        // Activate objects
+        if (objectToActivate != null)
+        {
+            objectToActivate.SetActive(true);
+        }
+
+        // Destroy parent object
+        Destroy(transform.parent.gameObject);
+    }
 }

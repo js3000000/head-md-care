@@ -10,6 +10,8 @@ public class CloseWindow : MonoBehaviour, IPointerClickHandler
     public float pulseAmount = 0.1f;
     public float pulseSpeed = 3f;
 
+    public bool canClick = false;
+
     Vector3 originalScale;
     bool pulsing = false;
 
@@ -40,8 +42,15 @@ public class CloseWindow : MonoBehaviour, IPointerClickHandler
             pulsing = true;
     }
 
+    [YarnCommand("setCanClickForCloseButton")]
+    public void canBeClicked(bool value)
+    {
+        canClick = value;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!canClick) return;
         Destroy(transform.parent.gameObject);
         //start the node specified in clickNodeName
         if (dialogueRunner != null && !string.IsNullOrEmpty(clickNodeName))

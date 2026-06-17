@@ -15,6 +15,10 @@ public class DesktopItem : MonoBehaviour,
     public bool canDrag = false;
     private bool deleteAfterClick = false;
 
+    [Header("Audio")]
+    public AudioClip inputSound;
+    private AudioSource audioSource;
+
     [Header("Yarn")]
     public DialogueRunner dialogueRunner;
 
@@ -79,6 +83,15 @@ public class DesktopItem : MonoBehaviour,
         {
             trashOriginalScale = trashTransform.localScale;
         }
+
+        // Get AudioSource from this GameObject
+        audioSource = GetComponent<AudioSource>();
+
+        // Optional: use AudioSource clip automatically
+        if (inputSound == null)
+        {
+            inputSound = audioSource.clip;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -141,6 +154,14 @@ public class DesktopItem : MonoBehaviour,
         // Mark the file as opened so trashing is no longer treated as the first interaction
         hasOpenedFile = true;
         isFirstInteraction = false;
+
+        if (inputSound != null)
+        {
+            audioSource.clip = inputSound;
+            audioSource.Play();
+
+            Debug.Log("Played click sound");
+        }
 
         // Prevent click from firing after drag
         if (wasDragged)
