@@ -19,6 +19,8 @@ File:
 A short preview video of the prototype is also available here:
 [Dear Friend video preview](https://youtu.be/ya9sq1jCNZ4)
 
+[Click here](https://youtu.be/1DqPJDRekPw) for the long version of the whole prototype experience.
+
 This video gives a quick overview of the interactive experience, including the computer interface, file interactions, dialogue moments, and camera movement.
 
 ## Usage
